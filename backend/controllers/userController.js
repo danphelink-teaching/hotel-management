@@ -38,6 +38,23 @@ exports.getUserById = async (req, res) => {
     res.status(500).json({ message: errorMessage });
   }
 };
+
+
+exports.getUserByEmail = async (req, res) => {
+  try {
+    const email = req.params.email;
+    const user = await User.find({ email: email });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    return user;
+  } catch (error) {
+    res.status(500).json({
+      message: error.message || "An error occurred while retrieving the user by email",
+    });
+  }
+};
+=
 exports.getAllUsers = async (req, res) => {
   try {
     const users = await User.find().select("-password");
