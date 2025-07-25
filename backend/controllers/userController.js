@@ -39,6 +39,7 @@ exports.getUserById = async (req, res) => {
   }
 };
 
+
 exports.getUserByEmail = async (req, res) => {
   try {
     const email = req.params.email;
@@ -53,6 +54,7 @@ exports.getUserByEmail = async (req, res) => {
     });
   }
 };
+=
 exports.getAllUsers = async (req, res) => {
   try {
     const users = await User.find().select("-password");
