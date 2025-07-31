@@ -39,7 +39,6 @@ exports.getUserById = async (req, res) => {
   }
 };
 
-
 exports.getUserByEmail = async (req, res) => {
   try {
     const email = req.params.email;
@@ -50,11 +49,12 @@ exports.getUserByEmail = async (req, res) => {
     return user;
   } catch (error) {
     res.status(500).json({
-      message: error.message || "An error occurred while retrieving the user by email",
+      message:
+        error.message || "An error occurred while retrieving the user by email",
     });
   }
 };
-=
+
 exports.getAllUsers = async (req, res) => {
   try {
     const users = await User.find().select("-password");
