@@ -4,14 +4,14 @@ const { authenticate, authorize } = require("../middlewares/authMiddleware");
 
 router.get(
   "/all",
-  authenticate,
-  authorize(["admin"]),
+  // authenticate,
+  // authorize(["admin"]),
   hotelController.getAllHotels,
 );
 router.post(
   "/create",
-  authenticate,
-  authorize(["admin"]),
+  // authenticate,
+  // authorize(["admin"]),
   hotelController.createHotel,
 );
 router.get(
