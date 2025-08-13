@@ -1,5 +1,6 @@
 const express = require("express");
 const dbConnect = require("./dbConnect/dbConnect");
+const cors = require("cors");
 const app = express();
 
 const bodyParser = require("body-parser");
@@ -9,6 +10,15 @@ const PORT = process.env.PORT || 8000;
 const indexRoutes = require("./routes/indexRoutes");
 dotenv.config();
 dbConnect();
+
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  }),
+);
 
 // Middleware to parse JSON and URL-encoded data
 
